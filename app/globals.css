@@ -24,3 +24,17 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add Leaflet styles for the map */
+@import 'leaflet/dist/leaflet.css';
+
+/* Override leaflet-defaulticon-compat styles to make sure custom icons work */
+.leaflet-container .leaflet-marker-icon {
+  background-color: transparent !important;
+  border: none !important;
+}
