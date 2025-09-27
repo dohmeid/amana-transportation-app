@@ -1,77 +1,16 @@
-:root {
-  --max-width: 1100px;
-  --border-radius: 8px;
-  --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
-    'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
-    'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+@import "tailwindcss";
 
-  /* Clean Theme Colors */
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 240, 242, 245;
-  --background-end-rgb: 255, 255, 255;
-  --primary-color: #0070f3;
-  --secondary-color: #6c757d;
-  --card-bg-rgb: 255, 255, 255;
-  --card-border-rgb: 224, 224, 224;
+
+.leaflet-bus-icon,
+.leaflet-stop-icon {
+  border-radius: 50%; /* This makes the corners fully rounded, creating a circle */
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+.leaflet-bus-icon{
+  border: 3px solid #581c87;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-main {
-  padding: 2rem 1rem;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  width: 100%;
-}
-
-.container {
-  width: 100%;
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-/* Add other global styles or utility classes here */
-.card {
-    padding: 1.5rem;
-    background: rgb(var(--card-bg-rgb));
-    border: 1px solid rgb(var(--card-border-rgb));
-    border-radius: var(--border-radius);
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-}
-
-@media (min-width: 768px) {
-    main {
-        padding: 4rem 2rem;
-    }
+.leaflet-stop-icon {
+  border: 1px solid red;
 }
