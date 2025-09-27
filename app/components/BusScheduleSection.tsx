@@ -46,6 +46,31 @@ function BusScheduleTable({ stops }: BusScheduleTableProps) {
   );
 }
 
+function BusScheduleList({ stops }: BusScheduleTableProps) {
+  if (stops.length === 0) {
+    return (
+      <div className="flex items-center justify-center h-full py-10">
+        <p className="text-gray-500 text-center px-4">Please select a bus line to see its schedule.</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="space-y-4">
+      {stops.map((item) => (
+        <div key={item.name} className={`p-4 rounded-lg shadow ${item.is_next_stop ? "bg-amber-400" : "bg-white"}`}>
+          <div className="flex justify-between items-center">
+            <span className="text-sm font-medium text-gray-900">{item.name}</span>
+            <span className={`text-sm font-semibold ${item.is_next_stop ? 'text-gray-900' : 'text-purple-700'}`}>
+              {item.estimated_arrival}
+            </span>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export function BusScheduleSection() {
   const busLines = busData.bus_lines;
   const [selectedBusId, setSelectedBusId] = useState<number | null>(busLines[0]?.id ?? null);
@@ -78,11 +103,18 @@ export function BusScheduleSection() {
           onBusSelect={handleBusSelection}
         />
 
+        {/* Desktop Table View */}
         <div className="hidden md:block mx-auto max-w-2xl">
-          <div className="shadow-md sm:rounded-lg overflow-y-auto h-[480px] relative">
+          <div className="shadow-md sm:rounded-lg overflow-auto h-[480px] relative">
               <BusScheduleTable stops={selectedBusData?.bus_stops ?? []} />
           </div>
         </div>
+
+        {/* Mobile Card List View */}
+        <div className="md:hidden mt-8">
+          <BusScheduleList stops={selectedBusData?.bus_stops ?? []} />
+        </div>
+
       </div>
 
     </section>
