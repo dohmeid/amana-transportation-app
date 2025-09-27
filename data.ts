@@ -1,4 +1,4 @@
-export const amanaData = {
+export const busData = {
   "message": "Amana Transportation bus data retrieved successfully",
   "company_info": {
     "name": "Amana Transportation",
