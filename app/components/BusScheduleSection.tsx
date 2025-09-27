@@ -2,16 +2,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { busData } from '../../data';
 
-
-const scheduleData = [
-  { route: '101', origin: 'Downtown Central', destination: 'Uptown Mall', time: '08:00 AM' },
-  { route: '102', origin: 'Westside Station', destination: 'Eastside Plaza', time: '08:15 AM' },
-  { route: '205', origin: 'North Park', destination: 'South Bay', time: '08:30 AM' },
-  { route: '101', origin: 'Downtown Central', destination: 'Uptown Mall', time: '09:00 AM' },
-  { route: '303', origin: 'Airport', destination: 'City University', time: '09:05 AM' },
-  { route: '102', origin: 'Westside Station', destination: 'Eastside Plaza', time: '09:15 AM' },
-];
-
 export function BusSchedule() {
 
   const [selectedBusId, setSelectedBusId] = useState<number | null>(null);
@@ -60,28 +50,31 @@ export function BusSchedule() {
           ))}
         </div>
 
-        <div className="hidden md:block shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-          <table className="min-w-full divide-y divide-gray-200">
+        <div className="hidden md:block mx-auto max-w-2xl">
+          <div className="shadow-md sm:rounded-lg overflow-hidden h-[480px] flex flex-col">
+            <table className="min-w-full divide-y divide-gray-200 table-fixed">
             <thead className="bg-gray-100">
               <tr>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th scope="col" className="w-[70%] px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-r border-gray-200">
                   Bus Stop
                 </th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th scope="col" className="w-[30%] px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Next Time of Arrival
                 </th>
               </tr>
             </thead>
 
-            <tbody className="bg-white divide-y divide-gray-200">
-              {scheduleData.map((item, index) => (
-                <tr key={index} className="hover:bg-gray-50">
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{item.route}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-blue-600">{item.time}</td>
+              <tbody className="bg-white divide-y divide-gray-200 overflow-y-auto">
+              {selectedBusData?.bus_stops.map((item, index) => (
+                <tr key={index} className={`${item.is_next_stop ? "bg-amber-400 hover:bg-amber-500":"hover:bg-gray-50"}`}
+                >
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-gray-200">{item.name}</td>
+                    <td className="px-3 py-4 whitespace-nowrap text-sm font-semibold text-purple-700">{item.estimated_arrival}</td>
                 </tr>
               ))}
             </tbody>
           </table>
+          </div>
         </div>
 
       
