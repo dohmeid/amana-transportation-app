@@ -4,6 +4,8 @@ Welcome to the Amana Real-Time Bus Tracker! This is a web application designed t
 
 <!-- You can add a screenshot of your application here! -->
 <!-- !App Screenshot -->
+<img width="1278" height="693" alt="Screenshot 2025-09-27 221952" src="https://github.com/user-attachments/assets/c069e291-2218-4ae8-85ad-28df9ddb5d62" />
+
 
 ## ✨ Features
 
