@@ -105,7 +105,7 @@ export function BusScheduleSection() {
 
         {/* Desktop Table View */}
         <div className="hidden md:block mx-auto max-w-2xl">
-          <div className="shadow-md sm:rounded-lg overflow-auto h-[480px] relative">
+          <div className="shadow-md sm:rounded-lg overflow-auto h-[400px] relative">
               <BusScheduleTable stops={selectedBusData?.bus_stops ?? []} />
           </div>
         </div>
