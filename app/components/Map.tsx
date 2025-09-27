@@ -2,34 +2,8 @@
 import React, { useEffect, useMemo, useRef } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, Polyline } from 'react-leaflet';
 import L, { Icon, LatLngExpression, LatLngBounds } from 'leaflet';
+import { BusData } from '../types/index';
 import 'leaflet/dist/leaflet.css';
-
-interface BusStop {
-  id: number;
-  name: string;
-  latitude: number;
-  longitude: number;
-  estimated_arrival: string;
-  is_next_stop: boolean;
-}
-
-interface BusData {
-  id: number;
-  name: string,
-  route_number: string;
-  current_location: {
-    latitude: number;
-    longitude: number;
-    address: string;
-  };
-  status: string;
-  passengers: {
-    current: number;
-    capacity: number;
-    utilization_percentage: number;
-  };
-  bus_stops: BusStop[];
-}
 
 interface MapProps {
   busData: BusData | null;
@@ -38,7 +12,8 @@ interface MapProps {
 const busIcon = new Icon({
   iconUrl: '/icons/bus-icon.jpg',
   iconSize: [35, 35],
-  className: 'leaflet-bus-icon'
+  className: 'leaflet-bus-icon',
+  popupAnchor: [0, -55]
 });
 
 const stopIcon = new Icon({
@@ -107,7 +82,7 @@ const Map = ({ busData }: MapProps) => {
         ))}
 
         {/* A marker for the bus's current location */}
-        <Marker position={position} icon={busIcon} zIndexOffset={1000}>
+        <Marker position={[busData.current_location.latitude,busData.current_location.longitude]} icon={busIcon} zIndexOffset={100}>
           <Popup className='w-90 h-30'>
             <div className="text-center">
               <h3 className="font-bold text-lg">Bus{busData.id}, {busData.name}</h3>
