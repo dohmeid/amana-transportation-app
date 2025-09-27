@@ -1,15 +1,13 @@
-import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import Footer from './components/Footer';
-import HomePage from './components/HomePage';
+import BusMapSection from './components/BusMapSection';
+import BusScheduleSection from './components/BusScheduleSection';
 
 export default function Page() {
   return (
-    <main>
-      <Navbar />
+    <>
       <Hero />
-      <HomePage />
-      <Footer />
-    </main>
+      <BusMapSection />
+      <BusScheduleSection />
+    </>
   );
 }
