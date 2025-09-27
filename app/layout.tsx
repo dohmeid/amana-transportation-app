@@ -9,6 +9,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Amana Transportation",
   description: "Live bus tracking and schedules",
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({
